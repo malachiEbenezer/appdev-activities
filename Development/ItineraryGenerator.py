@@ -224,3 +224,49 @@ def genItinerary(cont, days=5):
         itinerary.append(dailyPlan)
 
     return itinerary
+
+# -----------------------------Display the generated itinerary day by day-----------------------------
+def displayItinerary(itinerary):
+    print("\n🗓️ Your Detailed Itinerary 🗓️")
+    print("-" * 50)
+
+    # LOOPING through the itinerary list (LISTS)
+    for plan in itinerary:
+        print(f"Day {plan['Day']} in {plan['City']} ({plan['Continent']})")
+        print(f"  Activity: {plan['Activity']}")
+        print(f"  Must-try Food: {plan['Food']}")
+        print(f"  Hotel: {plan['Hotel']}")
+        print(f"  Transportation: {plan['Transportation']}")
+        print("-" * 50)
+
+# -----------------------------Show trip highlights for quick summary-----------------------------
+def showHighlights(itinerary):
+    print("\n🌟 Trip Highlights 🌟")
+
+    # LIST COMPREHENSIONS + JOINING LISTS
+    # Extract cities, foods, and activities from the itinerary for highlights
+    cities = [plan['City'] for plan in itinerary]
+    foods = [plan['Food'] for plan in itinerary]
+    activities = [plan['Activity'] for plan in itinerary]
+
+    print(f"Cities you'll visit: {', '.join(cities)}")       # JOINING LISTS
+    print(f"Must-try foods: {', '.join(foods)}")            # JOINING LISTS
+    print(f"Key activities: {', '.join(activities)}")       # JOINING LISTS
+
+# -----------------------------Main function to run the program-----------------------------
+def main():
+    # STEP 1: Ask for desired continent
+    continent = getDesiredContinent()
+
+    # STEP 2: Generate itinerary with randomness
+    itinerary = genItinerary(continent, days=5)
+
+    # STEP 3: Display full itinerary (day-by-day plan)
+    displayItinerary(itinerary)
+
+    # STEP 4: Show trip highlights (summary)
+    showHighlights(itinerary)
+
+# -----------------------------Run the program-----------------------------
+if __name__ == "__main__":
+    main()
