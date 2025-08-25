@@ -168,16 +168,16 @@ def getDesiredContinent():
         try:
             # sel variable to hold the selected continent of the user
             sel = int(
-                input(f"\nWhich continent would you like to explore?\nEnter number between 1 and {len(conts)}:\t\t"))
+                input(f"\n🌎Which continent would you like to explore?\nEnter number between 1 and {len(conts)}:\t\t"))
             if sel >= 1 and sel <= len(conts):
                 selCont = conts[sel - 1]
                 # 🎉👏 emojis for design
                 print(f"\n🎉Excellent choice!🎉\nLet's explore {selCont}!👏")
                 return selCont
             else:
-                print(f"Please enter a number between 1 and {len(conts)} only.")
+                print(f"⚠️ Please enter a number between 1 and {len(conts)} only.")
         except ValueError:
-            print("Please enter what is in the selection only.")
+            print("⚠️ Please enter what is in the selection only.")
 
 
 # method for generating itinerary on a five-day basis
@@ -240,7 +240,7 @@ def displayItinerary(itinerary):
 # -----------------------------Show trip highlights for quick summary-----------------------------
 def showHighlights(itinerary):
     print("\n🌟 Trip Highlights 🌟")
-
+    print("=" * 70)
     # LIST COMPREHENSIONS + JOINING LISTS
     # Extract cities, foods, and activities from the itinerary for highlights
     cities = [plan['City'] for plan in itinerary]
@@ -249,7 +249,9 @@ def showHighlights(itinerary):
 
     print(f"🏙️ Cities you'll visit: {', '.join(cities)}")       # JOINING LISTS
     print(f"🍴 Must-try foods: {', '.join(foods)}")            # JOINING LISTS
-    print(f"🎉 Key activities: {', '.join(activities)}")      # JOINING LISTS
+    print(f"🎉 Key activities: ")      # JOINING LISTS
+    for act in activities:
+        print(f"    📍 {act}")
 
 # -----------------------------Main function to run the program-----------------------------
 def main():
