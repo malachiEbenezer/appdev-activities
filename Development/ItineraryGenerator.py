@@ -154,8 +154,8 @@ travelData = {
 def getDesiredContinent():
     # Welcome message for the user
     # 🌏✨ emojis for designs
-    print("✨WELCOME TO TRAVEL-ACROSS WORLD🌏 ITINERARY GENERATOR!✨")
-    print("-" * 70)
+    print("\n✨WELCOME TO TRAVEL-ACROSS WORLD🌏 ITINERARY GENERATOR!✨")
+    print("=" * 70)
     print("\nAvailable continents to explore:")
 
     # Display the list of available continents
@@ -227,17 +227,15 @@ def genItinerary(cont, days=5):
 
 # -----------------------------Display the generated itinerary day by day-----------------------------
 def displayItinerary(itinerary):
-    print("\n🗓️ Your Detailed Itinerary 🗓️")
-    print("-" * 50)
-
-    # LOOPING through the itinerary list (LISTS)
+    print(f"\n📋 YOUR {itinerary[0]['Continent'].upper()} ITINERARY 📋")
+    print("=" * 70)
     for plan in itinerary:
-        print(f"Day {plan['Day']} in {plan['City']} ({plan['Continent']})")
-        print(f"  Activity: {plan['Activity']}")
-        print(f"  Must-try Food: {plan['Food']}")
-        print(f"  Hotel: {plan['Hotel']}")
-        print(f"  Transportation: {plan['Transportation']}")
+        print(f"\n🌞 Day {plan['Day']}: {plan['City']} - {plan['Continent']}")
         print("-" * 50)
+        print(f"🎯 Activity: {plan['Activity']}")
+        print(f"🍽️ Must-try Food: {plan['Food']}")
+        print(f"🏨 Hotel: {plan['Hotel']}")
+        print(f"🚗 Transportation: {plan['Transportation']}")
 
 # -----------------------------Show trip highlights for quick summary-----------------------------
 def showHighlights(itinerary):
@@ -249,23 +247,24 @@ def showHighlights(itinerary):
     foods = [plan['Food'] for plan in itinerary]
     activities = [plan['Activity'] for plan in itinerary]
 
-    print(f"Cities you'll visit: {', '.join(cities)}")       # JOINING LISTS
-    print(f"Must-try foods: {', '.join(foods)}")            # JOINING LISTS
-    print(f"Key activities: {', '.join(activities)}")       # JOINING LISTS
+    print(f"🏙️ Cities you'll visit: {', '.join(cities)}")       # JOINING LISTS
+    print(f"🍴 Must-try foods: {', '.join(foods)}")            # JOINING LISTS
+    print(f"🎉 Key activities: {', '.join(activities)}")      # JOINING LISTS
 
 # -----------------------------Main function to run the program-----------------------------
 def main():
-    # STEP 1: Ask for desired continent
-    continent = getDesiredContinent()
+    while True:
+        continent = getDesiredContinent()
+        itinerary = genItinerary(continent, days=5)
 
-    # STEP 2: Generate itinerary with randomness
-    itinerary = genItinerary(continent, days=5)
+        displayItinerary(itinerary)
+        showHighlights(itinerary)
 
-    # STEP 3: Display full itinerary (day-by-day plan)
-    displayItinerary(itinerary)
-
-    # STEP 4: Show trip highlights (summary)
-    showHighlights(itinerary)
+        # Retry option
+        again = input("\n🔄 Would you like to explore another continent? (y/n): ").lower()
+        if again != 'y':
+            print("\n✨ Thank you for using the Travel-Across World Generator! Safe travels! ✈️")
+            break
 
 # -----------------------------Run the program-----------------------------
 if __name__ == "__main__":
