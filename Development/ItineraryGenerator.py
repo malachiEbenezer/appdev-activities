@@ -1,3 +1,19 @@
+'''
+#Intro: Amigo
+Group Members: BSIS-4A
+1. Amigo, Marieneth Q. -
+2. Cabunoc, Ellaine Mae -
+3. Caliao, Micky Jean -
+4. Justol, Princes -
+5. Kaludan, Esnaira -
+6. Mamarinta, Yasryll Rosmia -
+7. Mayola, Gia Mae C. -
+8. Otaza, Princess Alessandra M. -
+9. Relativo, Xavier -
+
+'''
+
+#Kaludan and Mamarinta
 # importing random module to implement randomness
 import random
 
@@ -150,7 +166,7 @@ travelData = {
     }
 }
 
-
+#Cabunoc
 def getDesiredContinent():
     # Welcome message for the user
     # 🌏✨ emojis for designs
@@ -180,6 +196,7 @@ def getDesiredContinent():
             print("⚠️ Please enter what is in the selection only.")
 
 
+#Caliao
 # method for generating itinerary on a five-day basis
 def genItinerary(cont, days=5):
     # condition if the continent is not in the travel data
@@ -225,6 +242,7 @@ def genItinerary(cont, days=5):
 
     return itinerary
 
+#Justol
 # -----------------------------Display the generated itinerary day by day-----------------------------
 def displayItinerary(itinerary):
     print(f"\n📋 YOUR {itinerary[0]['Continent'].upper()} ITINERARY 📋")
@@ -237,6 +255,7 @@ def displayItinerary(itinerary):
         print(f"🏨 Hotel: {plan['Hotel']}")
         print(f"🚗 Transportation: {plan['Transportation']}")
 
+#Mayola
 # -----------------------------Show trip highlights for quick summary-----------------------------
 def showHighlights(itinerary):
     print("\n🌟 Trip Highlights 🌟")
@@ -253,6 +272,7 @@ def showHighlights(itinerary):
     for act in activities:
         print(f"    📍 {act}")
 
+#Otaza
 # -----------------------------Main function to run the program-----------------------------
 def main():
     while True:
@@ -268,6 +288,7 @@ def main():
             print("\n✨ Thank you for using the Travel-Across World Generator! Safe travels! ✈️")
             break
 
+#Relativo
 # -----------------------------Run the program-----------------------------
 if __name__ == "__main__":
     main()
